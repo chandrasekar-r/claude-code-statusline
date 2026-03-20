@@ -60,7 +60,7 @@ wizard_step_segments() {
       else
         printf "    %b %-12s — %s\n" "$check" "$seg" "${_SEGMENT_DESCRIPTIONS[$seg]:-}"
       fi
-      ((i++))
+      i=$(( i + 1 ))
     done
 
     printf "\n"
@@ -68,15 +68,15 @@ wizard_step_segments() {
     IFS= read -r -s -n1 key
     # Handle escape sequences for arrow keys
     if [ "$key" = $'\033' ]; then
-      read -r -s -n2 -t 0.1 seq
+      read -r -s -n2 -t 0.1 seq || true
       key="${key}${seq}"
     fi
 
     case "$key" in
       k|$'\033[A')  # up
-        [ "$cursor" -gt 0 ] && ((cursor--)) ;;
+        [ "$cursor" -gt 0 ] && cursor=$(( cursor - 1 )) ;;
       j|$'\033[B')  # down
-        [ "$cursor" -lt $(( ${#_ALL_SEGMENTS[@]} - 1 )) ] && ((cursor++)) ;;
+        [ "$cursor" -lt $(( ${#_ALL_SEGMENTS[@]} - 1 )) ] && cursor=$(( cursor + 1 )) ;;
       ' ')  # toggle
         local seg="${_ALL_SEGMENTS[$cursor]}"
         [ "${enabled[$seg]}" = "true" ] && enabled[$seg]=false || enabled[$seg]=true
