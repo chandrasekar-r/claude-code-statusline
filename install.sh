@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # install.sh — one-liner bootstrap
 #
-# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/USER/claude-code-statusline/main/install.sh)
+# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/chandrasekar-r/claude-code-statusline/main/install.sh)
 #
 # Or after cloning: ./install.sh
 
 set -euo pipefail
 
-REPO_URL="${CCS_REPO_URL:-https://github.com/USER/claude-code-statusline.git}"
+REPO_URL="${CCS_REPO_URL:-https://github.com/chandrasekar-r/claude-code-statusline.git}"
 INSTALL_DIR="${CCS_INSTALL_DIR:-${HOME}/.local/share/claude-statusline}"
 
 _info()  { printf "\033[38;5;51m→\033[0m  %s\n" "$*"; }

@@ -16,13 +16,13 @@ A Powerlevel10k-style statusline for [Claude Code](https://claude.ai/claude-code
 ## Quick Start
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/USER/claude-code-statusline/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/chandrasekar-r/claude-code-statusline/main/install.sh)
 ```
 
 Or clone and run manually:
 
 ```bash
-git clone https://github.com/USER/claude-code-statusline ~/.local/share/claude-statusline
+git clone https://github.com/chandrasekar-r/claude-code-statusline ~/.local/share/claude-statusline
 cd ~/.local/share/claude-statusline
 ./configure
 ```
