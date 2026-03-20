@@ -12,20 +12,22 @@ wizard_step_separators() {
   local R='\033[0m'
   local B1='\033[48;5;4m' B2='\033[48;5;17m' B3='\033[48;5;54m'
   local W='\033[38;5;255m' C='\033[38;5;51m' M='\033[38;5;201m'
+  # Expand separator chars into local variables (can't use $'...' inside double-quotes)
+  local s_round=$'\ue0b4' s_sharp=$'\ue0b0' s_slanted=$'\ue0b8'
 
   # round
   printf "  \033[1m1) round\033[0m   "
-  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}$'\ue0b4'${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}$'\ue0b4'${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m$'\ue0b4'${R}"
+  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}${s_round}${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}${s_round}${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m${s_round}${R}"
   printf "\n"
 
   # sharp
   printf "  \033[1m2) sharp\033[0m   "
-  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}$'\ue0b0'${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}$'\ue0b0'${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m$'\ue0b0'${R}"
+  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}${s_sharp}${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}${s_sharp}${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m${s_sharp}${R}"
   printf "\n"
 
   # slanted
   printf "  \033[1m3) slanted\033[0m "
-  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}$'\ue0b8'${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}$'\ue0b8'${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m$'\ue0b8'${R}"
+  printf "%b" "${B1}${W} ~/project ${R}\033[38;5;4m${B2}${s_slanted}${R}${B2}${C} Sonnet 4.6 ${R}\033[38;5;17m${B3}${s_slanted}${R}${B3}${M} ↑1.2k ↓4.5k ${R}\033[38;5;54m${s_slanted}${R}"
   printf "\n"
 
   # bare

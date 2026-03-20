@@ -3,7 +3,7 @@
 
 # All available segments in default order
 _ALL_SEGMENTS=(dir git model vim_mode tokens cache cost rate_limits)
-_SEGMENT_DESCRIPTIONS=(
+declare -A _SEGMENT_DESCRIPTIONS=(
   [dir]="Current working directory"
   [git]="Git branch and dirty indicator"
   [model]="Claude model name and agent"
@@ -30,6 +30,16 @@ wizard_step_segments() {
     for seg in $WIZARD_SEGMENTS; do
       enabled[$seg]=true
     done
+  fi
+
+  # Non-TTY fallback: skip interactive nav, use defaults
+  if [ ! -t 0 ]; then
+    local result=""
+    for seg in "${_ALL_SEGMENTS[@]}"; do
+      [ "${enabled[$seg]}" = "true" ] && result="${result}${seg} "
+    done
+    WIZARD_SEGMENTS="${result% }"
+    return 0
   fi
 
   local cursor=0

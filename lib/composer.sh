@@ -24,10 +24,11 @@ compose_segments() {
     [ -z "$SEGMENT_BG" ] && continue
 
     if [ -n "$prev_fg_next" ]; then
-      # Hard separator: fg = prev segment's bg colour, bg = this segment's bg
-      # When adjacent segments share the same bg colour, fg=bg makes sep invisible —
-      # the segment itself provides any visual divider (e.g. SEP_THIN in its text).
-      out+="\033[38;5;${prev_fg_next}m${SEGMENT_BG}${SEP_HARD}${RST}"
+      if [ "$prev_fg_next" != "$SEGMENT_FG_NEXT" ]; then
+        # Different backgrounds: render visible hard separator
+        out+="\033[38;5;${prev_fg_next}m${SEGMENT_BG}${SEP_HARD}${RST}"
+      fi
+      # Same background: emit nothing — the segment provides its own thin divider
     fi
 
     out+="${SEGMENT_BG}${SEGMENT_TEXT}"
