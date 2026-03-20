@@ -2,7 +2,7 @@
 
 A Powerlevel10k-style statusline for [Claude Code](https://claude.ai/claude-code) — fully configurable via an interactive wizard.
 
-![neon theme preview](docs/preview-neon.png)
+![neon theme preview](image.png)
 
 ## Features
 
